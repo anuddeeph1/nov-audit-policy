@@ -1,0 +1,33 @@
+apiVersion: audit.k8s.io/v1
+kind: Policy
+omitStages:
+  - "RequestReceived"
+rules:
+- level: Metadata
+  userGroups: ["system:authenticated"]
+  verbs: ["*"]
+  #nonResourceURLs:
+  #  - "/api*" # Wildcard matching.
+  #  - "/version"
+- level: None
+  resources:
+  - group: ""
+    resources: ["*"]
+  namespaces: ["nirmata-system"]
+- level: Metadata
+  resources:
+  - group: ""
+    resources: ["*"]
+  namespaces: ["*"]
+- level: Request
+  userGroups: ["system:masters"]
+  verbs: ["*"]
+- level: Metadata
+  omitStages:
+    - "RequestReceived"
+
+        #- level: RequestResponse
+        #resources:
+        #- group: ""
+        #resources: ["*"]
+        #namespaces: ["*"]
