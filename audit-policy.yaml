@@ -6,9 +6,6 @@ rules:
 - level: Metadata
   userGroups: ["system:authenticated"]
   verbs: ["*"]
-  #nonResourceURLs:
-  #  - "/api*" # Wildcard matching.
-  #  - "/version"
 - level: None
   resources:
   - group: ""
@@ -26,8 +23,4 @@ rules:
   omitStages:
     - "RequestReceived"
 
-        #- level: RequestResponse
-        #resources:
-        #- group: ""
-        #resources: ["*"]
-        #namespaces: ["*"]
+
